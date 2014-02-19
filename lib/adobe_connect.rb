@@ -2,6 +2,7 @@ require 'active_support/core_ext/string/inflections'
 require 'erb'
 require 'net/https'
 require 'nokogiri'
+require 'httparty'
 
 require 'adobe_connect/config'
 require 'adobe_connect/response'
