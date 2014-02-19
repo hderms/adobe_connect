@@ -43,18 +43,6 @@ module AdobeConnect
       @authenticated
     end
 
-    # Public: Get the HTTP client used to make requests.
-    #
-    # Returns a Net::HTTP instance.
-    def client
-      if @client.nil?
-        @client         = Net::HTTP.new(domain.host, domain.port)
-        @client.use_ssl = (domain.scheme == 'https')
-      end
-
-      @client
-    end
-
     # Public: Forward any missing methods to the Connect instance.
     #
     # method - The name of the method called.
@@ -90,8 +78,7 @@ module AdobeConnect
         params[:session] = session
       end
 
-      query_string = ParamFormatter.new(params).format
-      response     = client.get("/api/xml?action=#{action}#{query_string}")
+      response     = HTTParty.get("#{domain}/api/xml?action=#{action}#{query_string}", params)
       AdobeConnect::Response.new(response)
     end
   end
