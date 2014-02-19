@@ -16,7 +16,7 @@ module AdobeConnect
     #
     # Returns a query string.
     def format
-      Hash[hsh.map {|k, v| [k.to_s.dasherize, v]}]
+      Hash[params.map {|k, v| [k.to_s.dasherize, v]}]
     end
   end
 end
