@@ -16,10 +16,7 @@ module AdobeConnect
     #
     # Returns a query string.
     def format
-      params.sort_by { |k, v| k.to_s }.inject(['']) do |array, param|
-        key, value = param.map { |p| ERB::Util.url_encode(p) }
-        array << "#{key.dasherize}=#{value}"
-      end.join('&')
+      Hash[hsh.map {|k, v| k.to_s.dasherize, v}]
     end
   end
 end
