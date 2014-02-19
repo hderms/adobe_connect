@@ -79,7 +79,10 @@ module AdobeConnect
       end
 
       params[:action] = action
-      response     = HTTParty.get("#{domain}/api/xml", params)
+
+      #coerce this into a form HTTParty expects
+      options = {query: params}
+      response     = HTTParty.get("#{domain}/api/xml", options)
       AdobeConnect::Response.new(response)
     end
   end
