@@ -81,9 +81,9 @@ module AdobeConnect
       params[:action] = action
 
       #coerce this into a form HTTParty expects
-      params = {query: params}
-      http_party_options = ParamFormatter.new(params).format
-      response     = HTTParty.get("#{domain}/api/xml", http_party_options)
+      params = {query: ParamFormatter.new(params).format}
+      puts params
+      response     = HTTParty.get("#{domain}/api/xml", params)
       AdobeConnect::Response.new(response)
     end
   end
