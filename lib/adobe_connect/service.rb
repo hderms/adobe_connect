@@ -14,7 +14,7 @@ module AdobeConnect
     def initialize(options = AdobeConnect::Config)
       @username      = options[:username]
       @password      = options[:password]
-      @domain        = URI.parse(options[:domain])
+      @domain        = options[:domain]
       @authenticated = false
     end
 
