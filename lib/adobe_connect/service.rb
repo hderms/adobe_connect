@@ -26,7 +26,7 @@ module AdobeConnect
       if response.at_xpath('//status').attr('code') == 'ok'
         unless opts[:no_session]
           session_regex  = /BREEZESESSION=([^;]+)/
-          @session       = response.fetch('set-cookie').match(session_regex)[1]
+          @session       = response.headers.fetch('set-cookie').match(session_regex)[1]
           @authenticated = true
         else
           true
