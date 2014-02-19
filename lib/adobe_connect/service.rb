@@ -78,7 +78,8 @@ module AdobeConnect
         params[:session] = session
       end
 
-      response     = HTTParty.get("#{domain}/api/xml?action=#{action}#{query_string}", params)
+      params[:action] = action
+      response     = HTTParty.get("#{domain}/api/xml", params)
       AdobeConnect::Response.new(response)
     end
   end
