@@ -19,7 +19,7 @@ module AdobeConnect
     #
     # Returns a header value as a string.
     def fetch(header)
-      @response.fetch(header)
+      @response.headers.fetch(header)
     end
 
     # Public: Execute an xpath call against the response body.
